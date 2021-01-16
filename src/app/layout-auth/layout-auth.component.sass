@@ -1,21 +1,18 @@
+@import "src/assets/sass/colors"
 .layout_auth_container
-  background: #004B40
+  background: $primary-color
   height: 100vh
   width: 99vw
-
-
 .help_container
   display: flex
-  width: 200px
+  width: 250px
   img
     width: 34px
     margin: 0 1em
   p
-    font-size: 1.5em
+    font-size: .9em
     color: white
     text-decoration: underline
-    font: normal normal normal 14px/23px Avenir Next
-    letter-spacing: 0
 .brand
   //background: aliceblue
   display: flex
@@ -24,7 +21,14 @@
   margin: 3.5em 0
 .form-container
   background: white
-  border: 3px solid #1EEB00
+  border: 3px solid $secondary-color
   width: 400px
   margin: auto
   padding: 1em
+
+.linked
+  color: white
+  text-align: center
+  margin-top: 3em
+  font-size: 1.1em
+  text-decoration: underline

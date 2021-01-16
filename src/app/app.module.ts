@@ -11,6 +11,7 @@ import { LayoutAuthComponent } from './layout-auth/layout-auth.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { OtpComponent } from './otp/otp.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {MatInputModule} from '@angular/material/input';
     SignInComponent,
     HeaderComponent,
     FooterComponent,
-    LayoutAuthComponent
+    LayoutAuthComponent,
+    OtpComponent
   ],
   imports: [
     BrowserModule,
