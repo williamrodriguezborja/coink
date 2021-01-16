@@ -31,6 +31,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/custom-theme.scss",
               "src/styles.sass"
             ],
             "scripts": []
@@ -127,5 +128,8 @@
       }
     }
   },
-  "defaultProject": "coink"
+  "defaultProject": "coink",
+  "cli": {
+    "analytics": "c9636e9d-aaee-4d32-9339-8c9bb126e6ea"
+  }
 }
