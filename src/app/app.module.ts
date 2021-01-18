@@ -12,6 +12,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import { OtpComponent } from './otp/otp.component';
+import { PurchasesComponent } from './purchases/purchases.component';
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { OtpComponent } from './otp/otp.component';
     HeaderComponent,
     FooterComponent,
     LayoutAuthComponent,
-    OtpComponent
+    OtpComponent,
+    PurchasesComponent,
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,

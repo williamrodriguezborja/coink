@@ -9,6 +9,8 @@ export class OtpComponent implements OnInit {
 
   constructor() { }
 
+  otp:string = '';
+
   ngOnInit(): void {
   }
 

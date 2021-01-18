@@ -1,1 +1,24 @@
-<p>otp works!</p>
+<app-layout-auth>
+    <div class="text-center">
+        <img src="assets/img/escudo.svg" alt="">
+    </div>
+    <h2 class="montserrat bold text-center primary">
+        INGRESO SEGURO
+    </h2>
+    <p class="text-center font-12 primary ">
+        Un código de verificacion fue enviado a tu correo, porfavor introdúcelo.
+    </p>
+    <form >
+        <div class="text-center">
+            <mat-form-field>
+                <mat-label>Ingresa tu código de verificación</mat-label>
+                <input matInput type="text" [(ngModel)]="otp" name="otp">
+              </mat-form-field>
+        </div>
+        <div class="text-center">
+            <button class="submit">
+                Entrar
+            </button>
+        </div>
+    </form>
+</app-layout-auth>
