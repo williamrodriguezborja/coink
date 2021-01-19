@@ -1,38 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
+
+
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { SignInComponent } from './components/sign-in/sign-in.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import {FormsModule} from '@angular/forms';
-import { LayoutAuthComponent } from './layout-auth/layout-auth.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
-import { OtpComponent } from './otp/otp.component';
-import { PurchasesComponent } from './purchases/purchases.component';
-import { LayoutComponent } from './layout/layout.component';
+
+import { SharedModule } from './modules/shared/shared.module';
+import { AuthModule } from './modules/auth/auth.module';
+// import { PurchaseModule } from './modules/purchase/purchase.module';
+import { PurchaseModule } from './modules/purchase/purchase.module';
+
 
 @NgModule({
-  declarations: [
+  declarations: [ 
     AppComponent,
-    SignInComponent,
-    HeaderComponent,
-    FooterComponent,
-    LayoutAuthComponent,
-    OtpComponent,
-    PurchasesComponent,
-    LayoutComponent,
   ],
   imports: [
     BrowserModule,
+    SharedModule,  
     AppRoutingModule,
-    FormsModule,
-    MatInputModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule
+    AuthModule,
+    PurchaseModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

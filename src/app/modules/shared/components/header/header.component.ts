@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from '../../models/user';
+import {User} from 'src/app/models/user';
 import './header.component.sass';
 @Component({
   selector: 'app-header',
