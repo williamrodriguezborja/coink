@@ -1,0 +1,22 @@
+
+<ng-container *ngIf='control'>
+    <div *ngIf="control?.invalid && (control?.dirty || control?.touched)" class="errors_container">
+        <div *ngIf="control?.errors?.control">
+          correo@correo.com
+        </div> 
+        <div *ngIf="control?.errors?.required">
+          requerido.
+        </div> 
+        <div *ngIf="control?.errors?.minlength">
+          minimo {{control?.errors?.minlength?.requiredLength}} caractares.
+        </div>
+        <div *ngIf="control?.errors?.maxlength">
+          Maximo {{control?.errors?.maxlength?.requiredLength}} caractares.
+        </div>
+        <div *ngIf="control?.errors?.pattern">
+          formato invalido
+        </div>
+    </div>
+</ng-container>
+
+

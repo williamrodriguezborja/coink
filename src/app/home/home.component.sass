@@ -1,0 +1,64 @@
+@import 'src/assets/sass/colors'
+
+.container
+    background: $primary-color
+    min-height: 100vh
+    display: flex
+    justify-content: center
+    flex-flow: column wrap
+    align-content: center
+    text-align: center
+
+    header
+        h2
+            font-size: 1.5em
+            color: white
+            margin: 0em 0
+            img
+                // display: block
+                margin-bottom: 1em
+                margin-left: -3em
+                width: 40px
+        
+    .animation-container
+        animation: bounce
+        animation-duration: 3s
+        
+    .links
+        img
+            vertical-align: middle
+            width: 100px
+            
+    h3
+        color: white
+        display: flex
+        justify-content: center
+        align-content: center
+        align-items: center
+        margin-left: 1em
+        font-size: 1.5em
+
+.profile_container
+    display: flex
+    .profile
+        border-radius: 100%
+        margin: .5em 0
+        box-shadow: 0 0 1em lightgray
+       
+            
+@keyframes bounce
+    0%  
+        transform: scale(1,1) translateY(0)
+    10%
+        transform: scale(1.1,.9)    translateY(0)
+    30%
+        transform: scale(.9,1.1)   translateY(-100px)
+    50%
+        transform: scale(1.05,.95) translateY(0)
+    57%
+        transform: scale(1,1)      translateY(-7px)
+    64%
+        transform: scale(1,1)      translateY(0)
+    100%
+        transform: scale(1,1)      translateY(0)
+    

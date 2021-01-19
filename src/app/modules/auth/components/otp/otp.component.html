@@ -8,15 +8,16 @@
     <p class="text-center font-12 primary ">
         Un código de verificacion fue enviado a tu correo, porfavor introdúcelo.
     </p>
-    <form >
+    <form [formGroup]='form' (ngSubmit)='onSubmit($event)'>
         <div class="text-center">
             <mat-form-field>
                 <mat-label>Ingresa tu código de verificación</mat-label>
-                <input matInput type="text" [(ngModel)]="otp" name="otp">
+                <input matInput type="text" formControlName="otp" required>
               </mat-form-field>
+              <app-form-error [control]='otp'></app-form-error>
         </div>
         <div class="text-center">
-            <button class="submit">
+            <button class="submit" [disabled]='!form.valid'>
                 Entrar
             </button>
         </div>

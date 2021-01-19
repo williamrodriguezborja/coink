@@ -1,6 +1,8 @@
-
 <app-layout-auth>
-  <form (ngSubmit)="signIn($event)">
+  <ng-container *ngIf='isLoading '>
+    <mat-progress-bar mode="query"></mat-progress-bar>
+  </ng-container>
+  <form (ngSubmit)="signIn($event)" [formGroup]="signInForm">
     <h2 class="text-center montserrat bold primary">
       INGRESA A TU CUENTA
     </h2>
@@ -8,28 +10,30 @@
       <div>
         <mat-form-field>
           <mat-label>Usuario</mat-label>
-          <input matInput type="text" [(ngModel)]="user.name" name="user">
+          <input matInput type="email" formControlName='emailField' name="user" required>
         </mat-form-field>
+        <app-form-error [control]='email'></app-form-error>
       </div>
       <div>
         <mat-form-field>
           <mat-label>Contraseña</mat-label>
-          <input matInput type="text" [(ngModel)]="user.password" name="pass">
+          <input matInput type="password" formControlName='passwordField' name="pass" required>
         </mat-form-field>
+        <app-form-error [control]='password'></app-form-error>
       </div>
     </div>
-    <button class="submit" type="submit">
+    <button class="submit" type="submit" [disabled]="!signInForm.valid">
       INGRESAR
     </button>
     <div class="font-12 underline">
       <p>
         Olvidé mi PIN
       </p>
-      <p >
+      <p>
         Olvide mi número de celular empresarial
       </p>
     </div>
   </form>
-  
-  
+
+
 </app-layout-auth>

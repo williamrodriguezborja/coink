@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -12,41 +10,46 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { LayoutComponent } from './components/layout/layout.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
-
-
+import { FormErrorComponent } from './components/form-error/form-error.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [ 
     PaginationComponent,
     LayoutComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    FormErrorComponent
   ],
   imports: [
     CommonModule,
-    FormsModule,
+    ReactiveFormsModule,
     MatInputModule,
-    BrowserAnimationsModule,
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
     MatTableModule,
+    MatProgressBarModule,
+    MatSnackBarModule
   ],
   exports: [
-    FormsModule,
     MatInputModule,
-    BrowserAnimationsModule,
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
     MatTableModule,
+    MatProgressBarModule,
     ReactiveFormsModule,
+    MatSnackBarModule,
+    FormsModule,
     // components
     PaginationComponent,
-    LayoutComponent
-    
+    LayoutComponent,
+    FormErrorComponent
   ]
 })
 export class SharedModule { }

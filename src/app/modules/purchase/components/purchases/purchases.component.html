@@ -4,14 +4,14 @@
             Consultas - COMPRAS Con el cofre
         </h2>
     </div>
-    <form>
+    <form [formGroup]='form' (ngSubmit)='onSubmit($event)'>
         <div >
             <img src="assets/icon/calendar.svg" alt="exit">
             <mat-form-field appearance="standard">
                 <mat-label>Filtro de rango de fechas</mat-label>
                 <mat-date-range-input [rangePicker]="picker">
-                  <input matStartDate placeholder="Start date">
-                  <input matEndDate placeholder="End date">
+                  <input matStartDate placeholder="Start date" formControlName='begin_date'>
+                  <input matEndDate placeholder="End date" formControlName='end_date'>
                 </mat-date-range-input>
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-date-range-picker #picker></mat-date-range-picker>
@@ -20,7 +20,7 @@
                 <img src="assets/icon/search.svg" alt="exit">
                 <mat-form-field appearance="standard" >
                     <mat-label>Campo</mat-label>
-                    <mat-select>
+                    <mat-select formControlName='filter_field'>
                       <mat-option *ngFor="let field of fields"  [value]="field.value">
                         {{field.viewValue}}
                       </mat-option>
@@ -28,61 +28,78 @@
                   </mat-form-field>
             </div>
         </div>
-        <div class="search_container">
-                <mat-form-field class="search" >
+        <div class="search_container" >
+                <mat-form-field class="filter_value" >
                     <mat-label>Buscar</mat-label>
-                    <input matInput >
+                    <input matInput  formControlName='filter_value'>
                 </mat-form-field>
         </div>
         <div class="bold buttons_container">
-            <button class="btn-primary montserrate font-16">
+            <button class="btn-primary montserrate font-16" type="reset">
                 Limpiar filtros
             </button>
-            <button class="btn-secondary montserrate font-16">
+            <button class="btn-secondary montserrate font-16" type="submit">
                 Buscar
             </button>
         </div>
     </form>
-    <div>
-        <table mat-table [dataSource]="dataSource" >    
+    <div *ngIf='!error'>
+        <ng-container *ngIf='isLoading || isLoadingExport'>
+          <mat-progress-bar mode="query"></mat-progress-bar>
+        </ng-container>
+        <ng-container *ngIf='!isLoading'>
 
-            <!--- Note that these columns can be defined in any order.
-                  The actual rendered columns are set as a property on the row definition" -->
+          <ng-container *ngIf='dataSource?.length'>
+            <table mat-table [dataSource]="dataSource"  >    
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Nombre. </th>
+                <td mat-cell *matCellDef="let element"> {{element.names}} </td>
+              </ng-container>
+            
+              <ng-container matColumnDef="cel">
+                <th mat-header-cell *matHeaderCellDef> Cel </th>
+                <td mat-cell *matCellDef="let element"> {{element.phonenumber}} </td>
+              </ng-container>
+            
+              <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef> Email </th>
+                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+              </ng-container>
+            
+              <ng-container matColumnDef="date">
+                <th mat-header-cell *matHeaderCellDef> Fecha de Compra </th>
+                <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+              </ng-container>
+  
+              <ng-container matColumnDef="age">
+                  <th mat-header-cell *matHeaderCellDef> Edad </th>
+                  <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+              </ng-container>
+  
+              <ng-container matColumnDef="purchase">
+                <th mat-header-cell *matHeaderCellDef> Comprado </th>
+                <td mat-cell *matCellDef="let element"> {{element.purchases}} </td>
+            </ng-container>
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <app-pagination></app-pagination>
+            <button class="btn-primary bold" (click)='csv()'>
+              Descargar Excel
+            </button>
+          </ng-container>
+          <ng-container *ngIf='dataSource?.length==0'>
+            <p class="text-center">
+              No se han encontrado elementos
+            </p>
+              
+          </ng-container>
+        </ng-container>
           
-            <!-- Position Column -->
-            <ng-container matColumnDef="position">
-              <th mat-header-cell *matHeaderCellDef> Nombre. </th>
-              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-            </ng-container>
-          
-            <!-- Name Column -->
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef> Cel </th>
-              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-            </ng-container>
-          
-            <!-- Weight Column -->
-            <ng-container matColumnDef="weight">
-              <th mat-header-cell *matHeaderCellDef> Email </th>
-              <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-            </ng-container>
-          
-            <!-- Symbol Column -->
-            <ng-container matColumnDef="symbol">
-              <th mat-header-cell *matHeaderCellDef> Fecha de Compra </th>
-              <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="age">
-                <th mat-header-cell *matHeaderCellDef> Edad </th>
-                <td mat-cell *matCellDef="let element"> {{element.age}} </td>
-            </ng-container>
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
-          <app-pagination></app-pagination>
-          <button class="btn-primary bold">
-                Descargar Excel
-          </button>
+    </div>
+    <div *ngIf='error'>
+        <p>
+          Ha ocurrido un Error.
+        </p>
     </div>
 </app-layout>
